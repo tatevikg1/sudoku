@@ -4,7 +4,7 @@
 int main() {
     Sudoku sudoku;
 
-    std::cout << "Enter input. \n";
+    std::cout << "Enter sudoku input numbers (0 for empty cells). \n";
 
     sudoku.enterDigits();
 
