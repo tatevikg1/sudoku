@@ -46,10 +46,10 @@ private:
 
 // find all posibitities
     void findAllPosibleNumbers(){
-        for (int col = 0; col < size; col++) {
-            for(int row = 0; row < size; row++) {
+        for (int row = 0; row < size; row++) {
+            for(int col = 0; col < size; col++) {
                 // find the empty cells
-                if(grid[col][row] != 0){continue;}
+                if(grid[row][col] != 0){continue;}
 
                 if(row < 3)     {boxStartRow = 0;}
                 else if(row < 6){boxStartRow = 3;}
@@ -67,7 +67,7 @@ private:
 
                     if(isInBox(boxStartRow, boxStartCol, num)){continue;}
 
-                    posibles[col][row].push_back(num);
+                    posibles[row][col].push_back(num);
                 }
             }
         }
@@ -82,9 +82,7 @@ private:
             for(int j = 0; j < size; j++){
                 if(posibles[i][j].size() == 1){
                     grid[i][j] = posibles[i][j].back();
-                    posibles[i][j].pop_back();
                     solved = false;
-                    std::cout << grid[i][j] << "-";
                 }
                 posibles[i][j].clear();
             }
@@ -94,7 +92,7 @@ private:
 // check whether num is present in column or not
     bool isInCol(int col, int num){
         for (int row = 0; row < size; row++){
-            if (grid[col][row] == num){
+            if (grid[row][col] == num){
                 return true;
             }
         }
@@ -104,7 +102,7 @@ private:
 //check whether num is present in row or not
     bool isInRow(int row, int num){
         for (int col = 0; col < size; col++){
-            if (grid[col][row] == num){
+            if (grid[row][col] == num){
                 return true;
             }
         }
