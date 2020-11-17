@@ -1,22 +1,12 @@
 #include <vector>
 #include <iostream>
+#include "Sudoku.hpp"
 
-class Sudoku{
 
-private:
 
-    static const int size = 9;
-    int grid[size][size];
+    Sudoku::Sudoku(){};
 
-    std::vector <int> posibles[size][size];
-    int boxStartRow, boxStartCol;
-    bool solved = false;
-
-public:
-
-    Sudoku(){};
-
-    void enterDigits() {
+    void Sudoku::enterDigits() {
 
         for (int i = 0; i < size; i++) {
             for(int j = 0; j < size; j++) {
@@ -26,7 +16,7 @@ public:
 
     };
 
-    void solve(){
+    void Sudoku::solve(){
 
         while(!solved){
             findAllPosibleNumbers();
@@ -35,7 +25,7 @@ public:
 
     };
 
-    void print(){
+    void Sudoku::print(){
         for (int i = 0; i < size; i++) {
             for(int j = 0; j < size; j++) {
                 std::cout << grid[i][j] << " ";
@@ -46,7 +36,7 @@ public:
 
 
 // find all posibitities
-    void findAllPosibleNumbers(){
+    void Sudoku::findAllPosibleNumbers(){
         for (int row = 0; row < size; row++) {
             for(int col = 0; col < size; col++) {
                 // find the empty cells
@@ -75,7 +65,7 @@ public:
     };
 
 // fill found numbers
-    void fillFoundNumbers(){
+    void Sudoku::fillFoundNumbers(){
 
         solved = true;
 
@@ -91,7 +81,7 @@ public:
     };
 
 // check whether num is present in column or not
-    bool isInCol(int col, int num){
+    bool Sudoku::isInCol(int col, int num){
         for (int row = 0; row < size; row++){
             if (grid[row][col] == num){
                 return true;
@@ -101,7 +91,7 @@ public:
     }
 
 //check whether num is present in row or not
-    bool isInRow(int row, int num){
+    bool Sudoku::isInRow(int row, int num){
         for (int col = 0; col < size; col++){
             if (grid[row][col] == num){
                 return true;
@@ -111,7 +101,7 @@ public:
     }
 
 //check whether num is present in 3x3 box or not
-    bool isInBox(int boxStartRow, int boxStartCol, int num){
+    bool Sudoku::isInBox(int boxStartRow, int boxStartCol, int num){
         for (int row = 0; row < 3; row++){
             for (int col = 0; col < 3; col++){
                 if (grid[row+boxStartRow][col+boxStartCol] == num){
@@ -121,4 +111,3 @@ public:
         }
         return false;
     }
-};

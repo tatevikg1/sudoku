@@ -1,7 +1,8 @@
 #include <iostream>
-#include "sudoku.cpp"
+#include "Sudoku.hpp"
 
 int main() {
+    
     Sudoku sudoku;
 
     std::cout << "Enter sudoku input numbers (0 for empty cells). \n";
