@@ -3,9 +3,16 @@
 
 class Sudoku{
 
+private:
+
+    static const int size = 9;
+    int grid[size][size];
+
+    std::vector <int> posibles[size][size];
+    int boxStartRow, boxStartCol;
+    bool solved = false;
+
 public:
-    int size = 9;
-    int grid[9][9];
 
     Sudoku(){};
 
@@ -36,12 +43,6 @@ public:
             std::cout << "\n";
         }
     };
-
-private:
-
-    std::vector <int> posibles[9][9];
-    int boxStartRow, boxStartCol;
-    bool solved = false;
 
 
 // find all posibitities
