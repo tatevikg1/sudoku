@@ -1,18 +1,31 @@
 #include <iostream>
 #include "Sudoku.hpp"
+#include <exception>
+
 
 int main() {
-    
+
     Sudoku sudoku;
+
+    system("clear");
 
     std::cout << "Enter sudoku input numbers (0 for empty cells). \n";
 
-    sudoku.enterDigits();
+    try{
+        sudoku.enterDigits();
 
-    sudoku.solve();
+        sudoku.solve();
 
-    std::cout << "\n";
+        std::cout << "\n";
 
-    sudoku.print();
+        sudoku.print();
+
+    }catch(const std::range_error& e){
+
+        std::cerr << e.what() << "\n";
+    }
+
+
+
 
 }
