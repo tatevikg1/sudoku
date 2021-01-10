@@ -8,7 +8,6 @@ class Sudoku{
 private:
 
     static const int size = 9;
-    int grid[size][size];
 
     std::vector <int> posibles[size][size];
     int boxStartRow, boxStartCol;
@@ -16,14 +15,17 @@ private:
 
 public:
 
+    int grid[size][size];
+
     Sudoku();
 
     void enterDigits();
 
+    void enterDigits(int input[size][size]);
+
     void solve();
 
     void print();
-
 
     // find all posibitities
     void findAllPosibleNumbers();

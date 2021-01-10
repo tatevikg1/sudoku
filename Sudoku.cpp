@@ -19,6 +19,19 @@ void Sudoku::enterDigits() {
     }
 };
 
+void Sudoku::enterDigits(int input[9][9]){
+
+    for (int i = 0; i < size; i++) {
+        for(int j = 0; j < size; j++) {
+            grid[i][j] = input[i][j];
+            if (grid[i][j] < 0 || grid[i][j] > 9){
+                throw std::range_error("Number out of range.");
+            }
+        }
+    }    
+};
+
+
 void Sudoku::solve(){
 
     while(!solved){
@@ -105,12 +118,12 @@ bool Sudoku::isInRow(int row, int num){
 
 //check whether num is present in 3x3 box or not
 bool Sudoku::isInBox(int boxStartRow, int boxStartCol, int num){
-        for (int row = 0; row < 3; row++){
-            for (int col = 0; col < 3; col++){
-                if (grid[row+boxStartRow][col+boxStartCol] == num){
-                    return true;
-                }
+    for (int row = 0; row < 3; row++){
+        for (int col = 0; col < 3; col++){
+            if (grid[row+boxStartRow][col+boxStartCol] == num){
+                return true;
             }
         }
-        return false;
     }
+    return false;
+}
